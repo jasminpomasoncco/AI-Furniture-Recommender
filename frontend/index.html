@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Asistente comercial para recomendar muebles de melamina con IA." />
+  <title>Melamina Pro | Asistente Comercial</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">MI</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card hero">
+      <div class="hero-copy">
+        <p class="badge">Ventas inteligentes para catálogo de muebles</p>
+        <h1>Atención comercial asistida por IA para muebles de melamina</h1>
+        <p class="subtitle">
+          Ingresa la necesidad del cliente y el sistema sugiere el producto más adecuado,
+          con una respuesta lista para atención comercial.
+        </p>
+      </div>
+
+      <form id="recommendForm" class="form" autocomplete="off" spellcheck="false">
+        <div id="recomendador"></div>
+        <label for="consulta">Consulta del cliente</label>
+        <textarea id="consulta" name="consulta" rows="4" placeholder="Ej: Busco un closet moderno para un dormitorio pequeño y con buen almacenamiento"></textarea>
+        <button id="btnRecommend" type="submit">Recomendar</button>
+      </form>
+    </section>
+
+    <section class="grid">
+      <article class="card result-card" id="resultado">
+        <h2>Resultado de recomendación</h2>
+        <div class="result-item">
+          <span class="label">Categoría</span>
+          <p id="categoria" class="value muted">-</p>
+        </div>
+        <div class="result-item">
+          <span class="label">Producto recomendado</span>
+          <p id="producto" class="value muted">Esperando consulta...</p>
+        </div>
+        <div class="result-item">
+          <span class="label">Score</span>
+          <p id="score" class="value muted">-</p>
+        </div>
+        <div class="result-item">
+          <span class="label">Descripción</span>
+          <p id="descripcion" class="value muted">-</p>
+        </div>
+        <div class="result-item">
+          <span class="label">Medidas</span>
+          <p id="medidas" class="value muted">-</p>
+        </div>
+        <div class="result-item">
+          <span class="label">Especificaciones técnicas</span>
+          <p id="especificaciones" class="value muted">-</p>
+        </div>
+        <div class="result-item">
+          <span class="label">Precio</span>
+          <p id="precio" class="value muted">-</p>
+        </div>
+      </article>
+
+      <article class="card result-card assistant-card">
+        <h2>Respuesta del asistente</h2>
+        <p id="respuesta" class="assistant-text muted">Aquí aparecerá la recomendación generada por el modelo.</p>
+        <div class="assistant-note">
+          <span>Consejo</span>
+          <p class="muted">Puedes consultar por tamaño, materiales o acabados para afinar la recomendación.</p>
+        </div>
+      </article>
+    </section>
+
+    <p id="status" class="status"></p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="brand-mark brand-mark--small">MI</div>
+      <span>Melamina v.1.0</span>
+    </div>
+    <span>© 2026 Melamina Pro. Todos los derechos reservados.</span>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
