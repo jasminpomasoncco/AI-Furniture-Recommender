@@ -18,8 +18,9 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 FRONTEND_DIR = BASE_DIR / "frontend"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-client = OpenAI()
+client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 
 app = FastAPI(
     title="Product Recommender API",
@@ -90,6 +91,14 @@ Consulta del cliente:
 {consulta}
 
 Responde en español, con tono profesional, breve y útil. Si corresponde, destaca beneficios concretos del producto."""
+
+    if client is None:
+        precio_texto = "a cotización" if precios.strip().lower() == "a cotización" else precios
+        return (
+            f"Te recomiendo {producto} porque se ajusta muy bien a tu necesidad. "
+            f"Su estilo y características encajan con la consulta realizada. "
+            f"El precio es {precio_texto}."
+        )
 
     try:
         response = client.chat.completions.create(
